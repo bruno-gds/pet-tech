@@ -46,9 +46,4 @@ public class PessoaFisicaController {
         repo.delete(id);
         return ResponseEntity.ok("Delete com sucesso");
     }
-
-
-
-
-
 }
