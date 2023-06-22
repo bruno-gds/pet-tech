@@ -38,7 +38,7 @@ public class ProdutoControllerTest {
 
         Mockito.when(produtoService.findById(id)).thenReturn(produto);
 
-        ResultActions result = mockMvc.perform(get("/produto/{id}", id).accept(MediaType.APPLICATION_JSON));
+        ResultActions result = mockMvc.perform(get("/produtos/{id}", id).accept(MediaType.APPLICATION_JSON));
 
         result.andExpect(status().isOk());
     }
