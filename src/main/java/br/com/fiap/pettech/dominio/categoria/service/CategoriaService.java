@@ -13,7 +13,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.ConcurrentModificationException;
 import java.util.Optional;
 
 /**
@@ -35,15 +34,15 @@ public class CategoriaService {
 
     public CategoriaDTO findById(Long id) {
         Optional<Categoria> entity = repository.findById(id);
-        Categoria categoria = entity.orElseThrow(() -> new ConcurrentModificationException("Categoria não encontrada"));
+        Categoria categoria = entity.orElseThrow(() -> new ControllerNotFoundException("Categoria não encontrada"));
         return new CategoriaDTO(categoria);
     }
 
     public CategoriaDTO insert(CategoriaDTO dto) {
-        Categoria categoria = new Categoria();
-        mapperDtoToEntity(dto, categoria);
-        Categoria categoriaInsert = repository.save(categoria);
-        return new CategoriaDTO(categoriaInsert);
+        Categoria entity = new Categoria();
+        mapperDtoToEntity(dto, entity);
+        Categoria categoriaInserted = repository.save(entity);
+        return new CategoriaDTO(categoriaInserted);
     }
 
     public CategoriaDTO update(Long id, CategoriaDTO dto) {

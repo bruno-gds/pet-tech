@@ -50,7 +50,7 @@ public class CategoriaController {
             @RequestBody CategoriaDTO dto
     ) {
         CategoriaDTO categoriaDTO = service.insert(dto);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand((categoriaDTO.getId())).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand((categoriaDTO.getId())).toUri();
         return ResponseEntity.created(uri).body(categoriaDTO);
     }
 

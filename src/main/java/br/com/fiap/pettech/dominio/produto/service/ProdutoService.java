@@ -45,18 +45,15 @@ public class ProdutoService {
     public ProdutoDTO save(ProdutoDTO produto) {
         Produto entity = new Produto();
         mapperDtoToEntity(produto, entity);
-
         var produtoSaved = repo.save(entity);
-
         return new ProdutoDTO(produtoSaved, produtoSaved.getCategorias());
     }
 
+    @Transactional
     public ProdutoDTO update(UUID id, ProdutoDTO produto) {
-
         try {
             Produto entity = repo.getOne(id);
             mapperDtoToEntity(produto, entity);
-
             return new ProdutoDTO(entity, entity.getCategorias());
         } catch (EntityNotFoundException e) {
             throw new ControllerNotFoundException("Product not found, id:" + id);

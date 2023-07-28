@@ -19,13 +19,12 @@ public class Produto {
     private String descricao;
     private String urlImagem;
     private double preco;
-
     @ManyToMany
-    @JoinTable(
-            name = "tb_produto_categoria",
-            joinColumns = @JoinColumn(name = "produto_id"),
-            inverseJoinColumns = @JoinColumn(name = "categoria_id")
-    )
+        @JoinTable(
+                name = "tb_produto_categoria",
+                joinColumns = @JoinColumn(name = "produto_id"),
+                inverseJoinColumns = @JoinColumn(name = "categoria_id")
+        )
     Set<Categoria> categorias = new HashSet<>();
 
     public Produto() {}
