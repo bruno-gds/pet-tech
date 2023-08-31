@@ -1,4 +1,4 @@
-package br.com.fiap.pettech.dominio.produto.controller.exception;
+package br.com.fiap.pettech.exception.controller;
 
 /**
  * @author Bruno Gomes Damascena dos santos (bruno-gds) < brunog.damascena@gmail.com >
